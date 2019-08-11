@@ -8,7 +8,6 @@ import { uiActions } from '../../../ui/actions';
 
 export function* createPost ({ payload: comment }) {
     try {
-        throw new Error();
         yield put(uiActions.startFetching());
 
         const response = yield apply(api, api.posts.create, [comment]);

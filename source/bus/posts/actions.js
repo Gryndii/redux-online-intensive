@@ -19,16 +19,22 @@ export const postsActions = {
         };
     },
 
-    fetchPostsAsync: () => async (dispatch, getState) => {
-        dispatch({
+    fetchPostsAsync: () => {
+        return {
             type: types.FETCH_POSTS_ASYNC,
-        });
-
-        const response = await api.posts.fetch();
-        const result = await response.json();
-
-        dispatch(postsActions.fillPosts(result.data));
+        };
     },
+
+    // fetchPostsAsync: () => async (dispatch, getState) => {
+    //     dispatch({
+    //         type: types.FETCH_POSTS_ASYNC,
+    //     });
+    //
+    //     const response = await api.posts.fetch();
+    //     const result = await response.json();
+    //
+    //     dispatch(postsActions.fillPosts(result.data));
+    // },
 
     createPostAsync: (comment) => {
         return {
