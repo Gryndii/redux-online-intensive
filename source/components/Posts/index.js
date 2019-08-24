@@ -17,7 +17,8 @@ import { postsActions } from "../../bus/posts/actions";
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts,
+        profile: state.profile,
+        posts:   state.posts,
     };
 };
 
@@ -38,11 +39,6 @@ const mapDispatchToProps = (dispatch) => {
     mapDispatchToProps
 )
 export default class Posts extends Component {
-    static defaultProps = {
-        // State
-        profile: mockedProfile,
-    };
-
     componentDidMount () {
         const { actions } = this.props;
 
