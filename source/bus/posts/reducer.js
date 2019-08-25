@@ -16,6 +16,11 @@ export const postsReducer = (state = initialState, action) => {
                 fromJS(action.payload)
             );
 
+        case types.REMOVE_POST:
+            return state.update((posts) => {
+                return posts.filter((post) => post.get('id') !== action.payload);
+            });
+
         case types.CLEAR_POSTS:
             return state.clear();
 

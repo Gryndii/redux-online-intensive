@@ -2,12 +2,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { List } from 'immutable';
 import FlipMove from 'react-flip-move';
 
 // Instruments
 import Styles from './styles.m.css';
-import { mockedProfile } from '../../instruments/mockedData';
 
 // Components
 import { Composer, Catcher, Post } from '../../components';
@@ -28,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
             {
                 fetchPostsAsync: postsActions.fetchPostsAsync,
                 createPostAsync: postsActions.createPostAsync,
+                removePostAsync: postsActions.removePostAsync,
             },
             dispatch
         ),
