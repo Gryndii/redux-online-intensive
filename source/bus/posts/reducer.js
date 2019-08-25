@@ -5,7 +5,6 @@ import { fromJS, List } from 'immutable';
 import { types } from "./types";
 
 const initialState = List();
-console.log(initialState);
 
 export const postsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -16,6 +15,9 @@ export const postsReducer = (state = initialState, action) => {
             return state.unshift(
                 fromJS(action.payload)
             );
+
+        case types.CLEAR_POSTS:
+            return state.clear();
 
         default:
             return state;
