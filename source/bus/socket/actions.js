@@ -4,7 +4,7 @@ import { uiActions } from '../ui/actions';
 import { postsActions } from '../posts/actions';
 
 export const socketActions = {
-    listenConnection: () => dispatch => {
+    listenConnection: () => (dispatch) => {
         socket.on('connect', () => {
             dispatch(uiActions.setOnlineState());
         });
@@ -17,6 +17,7 @@ export const socketActions = {
     listenPosts: () => (dispatch, getState) => {
         socket.on('create', (event) => {
             const { data: post } = JSON.parse(event);
+
             dispatch(postsActions.createPost(post));
         });
 
@@ -25,7 +26,7 @@ export const socketActions = {
 
             if (meta.action === 'like') {
                 const liker = getState()
-                    .users.find(user => user.get('id') === data.userId)
+                    .users.find((user) => user.get('id') === data.userId)
                     .delete('avatar');
 
                 dispatch(
@@ -37,6 +38,12 @@ export const socketActions = {
             } else {
                 dispatch(postsActions.unlikePost(data));
             }
+        });
+
+        socket.on('remove', (event) => {
+            const { data: postId } = JSON.parse(event);
+
+            dispatch(postsActions.removePost(postId));
         });
     },
 };
