@@ -55,8 +55,8 @@ export const api = {
             return fetch(`${MAIN_URL}/feed`, {
                 method:  'POST',
                 headers: {
-                    'Authorization':    this.token,
-                    'Content-Type': 'application/json',
+                    'Authorization': this.token,
+                    'Content-Type':  'application/json',
                 },
                 body: JSON.stringify({ comment }),
             });
@@ -65,7 +65,7 @@ export const api = {
             return fetch(`${MAIN_URL}/feed/${postId}`, {
                 method:  'DELETE',
                 headers: {
-                    'Authorization':    this.token,
+                    'Authorization': this.token,
                 },
             });
         },
@@ -73,7 +73,17 @@ export const api = {
             return fetch(`${MAIN_URL}/feed/like/${postId}`, {
                 method:  'PUT',
                 headers: {
-                    'Authorization':    this.token,
+                    'Authorization': this.token,
+                },
+            });
+        },
+    },
+    users: {
+        fetch () {
+            return fetch(`${MAIN_URL}/user/all`, {
+                method:  'GET',
+                headers: {
+                    Authorization: this.token,
                 },
             });
         },
