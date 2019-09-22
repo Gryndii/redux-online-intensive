@@ -8,6 +8,7 @@ import { profileReducer as profile } from '../bus/profile/reducer';
 import { postsReducer as posts } from '../bus/posts/reducer';
 import { uiReducer as ui } from '../bus/ui/reducer';
 import { usersReducer as users } from '../bus/users/reducer';
+import { formsReducer as forms } from '../bus/forms/reducer';
 
 export const rootReducer = combineReducers({
     router,
@@ -16,4 +17,5 @@ export const rootReducer = combineReducers({
     posts,
     ui,
     users,
+    forms,
 });

@@ -6,6 +6,7 @@ import { api } from '../../../../REST';
 import { uiActions } from '../../../ui/actions';
 import { profileActions } from '../../../profile/actions';
 import { authActions } from '../../actions';
+import { actions } from 'react-redux-form';
 
 export function* authenticate () {
     try {
@@ -27,7 +28,8 @@ export function* authenticate () {
         }
 
         yield put(profileActions.fillProfile(profile));
-
+        yield put(actions.change('forms.user.profile.firstName', profile.firstName));
+        yield put(actions.change('forms.user.profile.lastName', profile.lastName));
         yield put(authActions.authenticate());
     } catch (error) {
         yield put(uiActions.emitError(error, 'Auth worker error'));
